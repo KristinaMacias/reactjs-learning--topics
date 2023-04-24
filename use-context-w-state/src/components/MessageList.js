@@ -12,7 +12,7 @@ export default function MessageList() {
         {MessageStateArr.map((message, index) => {
           return (
             <div key={index} style={{backgroundColor:"coral", margin:100}}>
-              <h3>{message}</h3>
+              <h3 style={{padding:20}}>{message}</h3>
             </div>
           );
         })}

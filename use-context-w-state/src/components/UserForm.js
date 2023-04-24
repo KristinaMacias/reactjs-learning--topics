@@ -9,12 +9,12 @@ export default function UserForm() {
   const [userText, setUserText] = useState(""); //to manage the text input
   const [userMessages, setUserMessages] = useState([]); //to manage all the user messages
 
-  //handle the event
+  //handle the event from the input field
   const handleEvent = (e) => {
     setUserText(e.target.value); //updates the userText state variable
   };
 
-  //handle submit function
+  //handle submit function when button is clicked
   const handleSubmit = (e) => {
     e.preventDefault();
     setUserMessages([...userMessages, userText]); //spreads the state array and adds userText to the back of the array

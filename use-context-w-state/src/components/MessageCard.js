@@ -5,10 +5,9 @@ export default function MessageCard() {
     
 
     return (
-        
-        <>
+        <div>
            <h1>Display User Messages</h1> 
            <MessageList />
-        </>
+        </div>
     )
 }
