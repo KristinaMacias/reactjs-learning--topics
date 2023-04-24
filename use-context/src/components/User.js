@@ -3,7 +3,8 @@ import { UserContext } from "../App";
 import Child from "../components/Child";
 
 export default function User() {
-  const value = useContext(UserContext);
+
+  const value = useContext(UserContext); // This is the consumer 
 
   return (
     <div>
