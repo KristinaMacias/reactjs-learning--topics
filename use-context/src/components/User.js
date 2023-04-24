@@ -1,14 +1,14 @@
-import React, { useContext } from 'react'
-import { UserContext } from '../App'
+import React, { useContext } from "react";
+import { UserContext } from "../App";
+import Child from "../components/Child";
 
+export default function User() {
+  const value = useContext(UserContext);
 
-export default function User () {
-
-    const value = useContext(UserContext)
-
-    return (
-        <UserContext.Consumer>
-            {value => <h1>{value}</h1>}
-        </UserContext.Consumer>
-    )
+  return (
+    <div>
+      <h1>{`Showing from User component: ${value}`}</h1>
+      <Child />
+    </div>
+  );
 }
