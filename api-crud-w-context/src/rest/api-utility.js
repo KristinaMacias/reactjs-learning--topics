@@ -37,6 +37,7 @@ export const postData = async (taskName) => {
 
 //delete from the api (async await)
 export const deleteData = async (id) => {
+  console.log(id)
   // try to make a delete request to the api
   try {
     const response = await fetch(`${API_ENDPOINT}/${id}`, {
@@ -60,5 +61,28 @@ export const deleteData = async (id) => {
     //catch any errors and log them to the console
   } catch (error) {
     console.error("Error deleting data from API:", error);
+  }
+};
+
+//put 
+export const updateData = async (id, newData) => {
+  try {
+    const response = await fetch(`${API_ENDPOINT}/${id}`, {
+      method: "PUT",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(newData),
+    });
+
+    if (!response.ok) {
+      throw new Error("Failed to update data in API");
+    }
+
+    const updatedData = await response.json();
+    console.log("Data successfully updated:", updatedData);
+    return updatedData;
+  } catch (error) {
+    console.error("Error updating data in API:", error);
   }
 };
