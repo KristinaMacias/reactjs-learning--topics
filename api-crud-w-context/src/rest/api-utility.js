@@ -17,23 +17,23 @@ export const fetchData = async () => {
 export const postData = async (taskName) => {
   try {
     const response = await fetch(API_ENDPOINT, {
-      method: 'POST',
+      method: "POST",
       headers: {
-        'Content-Type': 'application/json'
+        "Content-Type": "application/json",
       },
-      body: JSON.stringify({ //stringify the object with the taskInput passed in from the Form component
+      body: JSON.stringify({
+        //stringify the object with the taskInput passed in from the Form component
         taskInput: taskName,
-        completed: false
-      })
+        completed: false,
+      }),
     });
-    
+
     const data = await response.json();
-    console.log(data);
+    return data;
   } catch (error) {
     console.error(error);
   }
 };
-
 
 //delete from the api (async await)
 export const deleteData = async (id) => {
@@ -62,5 +62,3 @@ export const deleteData = async (id) => {
     console.error("Error deleting data from API:", error);
   }
 };
-
-

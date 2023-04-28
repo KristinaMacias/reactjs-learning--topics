@@ -1,31 +1,34 @@
-import React, { useContext, useState } from 'react';
-import { postData } from '../rest/api-utility';
-import { TodoContext } from '../App';
+import React, { useContext, useState, useEffect } from "react";
+import { postData, fetchData } from "../rest/api-utility";
+import { TodoContext } from "../App";
 
-export default function Form () {
-    const { allTasks, setAllTasks } = useContext(TodoContext);
-    const [ taskInput, setTaskInput ] = useState("")
+export default function Form() {
+  const { allTasks, setTasks } = useContext(TodoContext);
+  const [taskInput, setTaskInput] = useState("");
 
-    const handleChange = (e) => {
-        setTaskInput(e.target.value);
+  const handleChange = (e) => {
+    setTaskInput(e.target.value);
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    try {
+      const response = await postData(taskInput); //passing in the taskInput from state to postData
+      setTasks([...allTasks, response]);
+      setTaskInput("");
+    } catch (error) {
+      console.log(error);
     }
+    const fetchedData = await fetchData();
+    return fetchedData;
+  };
 
-    const handleSubmit = async (e) => {
-        e.preventDefault();
-        try {
-            const response = await postData(taskInput);
-            setAllTasks([...allTasks], response);
-            setTaskInput('')
-        } catch (error) {
-            console.log(error)
-        }
-    }
+  
 
-
-    return (
-        <form onSubmit={handleSubmit}>
-            <input type='text' onChange={handleChange}/>
-            <button>Submit</button>
-        </form>
-    )
+  return (
+    <form>
+      <input type="text" onChange={handleChange} />
+      <button onClick={handleSubmit}>Submit</button>
+    </form>
+  );
 }
