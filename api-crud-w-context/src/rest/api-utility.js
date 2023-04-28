@@ -37,7 +37,7 @@ export const postData = async (taskName) => {
 
 //delete from the api (async await)
 export const deleteData = async (id) => {
-  console.log(id)
+  console.log(id);
   // try to make a delete request to the api
   try {
     const response = await fetch(`${API_ENDPOINT}/${id}`, {
@@ -64,15 +64,15 @@ export const deleteData = async (id) => {
   }
 };
 
-//put 
-export const updateData = async (id, newData) => {
+//put
+export const updateData = async (id, taskInput) => {
   try {
     const response = await fetch(`${API_ENDPOINT}/${id}`, {
       method: "PUT",
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify(newData),
+      body: JSON.stringify(taskInput),
     });
 
     if (!response.ok) {

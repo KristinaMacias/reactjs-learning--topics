@@ -10,6 +10,7 @@ export default function Form() {
     setTaskInput(e.target.value);
   };
 
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
@@ -23,11 +24,9 @@ export default function Form() {
     return fetchedData;
   };
 
-  
-
   return (
     <form>
-      <input type="text" onChange={handleChange} />
+      <input type="text" onChange={handleChange} value={taskInput}/>
       <button onClick={handleSubmit}>Submit</button>
     </form>
   );
