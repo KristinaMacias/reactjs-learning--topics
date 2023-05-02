@@ -34,7 +34,7 @@ export default function DisplayTasks() {
     event.preventDefault(); // prevent form submission
     try {
       const updatedTask = await updateData(editTaskId, { 
-        taskInput: newTaskInput, //passing in the newTaskInput from state to updateData
+        taskInput: newTaskInput, //passing in the newTaskInput state variable to updateData
       });
       //map over allTasks and if the task.id matches the editTaskId, return the updatedTask, otherwise return the task
       const updatedData = allTasks.map((task) => {
@@ -43,9 +43,9 @@ export default function DisplayTasks() {
         }
         return task; //return the task that was not updated
       });
-      setTasks(updatedData);
-      setEditTaskId(null);
-      setNewTaskInput("");
+      setTasks(updatedData); //update the state with the updatedData
+      setEditTaskId(null); //close the edit form
+      setNewTaskInput(""); //clear the input field
     } catch (error) {
       console.log(error);
     }
